@@ -43,3 +43,18 @@ const fotoObserver = new IntersectionObserver(entries => {
 });
 
 fotoObserver.observe(foto);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+
+  smoothScrollLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          window.scrollTo({
+              top: target.offsetTop - 50,
+              behavior: 'smooth'
+          });
+      });
+  });
+});
